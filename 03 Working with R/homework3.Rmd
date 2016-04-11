@@ -18,27 +18,41 @@ Read in the homework3.csv data. For each of the following steps you
 should preface your R commands with some plain English explanation.
 -->
 
+Code to read in the data for the homework 3 assignment.
 
+dat<-read.csv("homework3.csv")
 
 <!--
 Check the structure of the data.
 -->
+Code to check the structure of the data for the homework 3 assignment.
 
-
+str(dat)
 
 <!--
 Find the mean, median, and standard deviation using the sd() function
 for the overall level of conservatism.
 -->
 
+Code to find the mean, median and standard deviation for conservatism.
 
+mean(dat$conservatism)
+median(dat$conservatism)
+sd(dat$conservatism)
 
 <!--
 Find the mean level of support for freshmen only.
 -->
 
+Code to find the mean level of conservatism for only the freshmen.
 
+mean(dat$conservatism[dat$year=="freshman"])
 
 <!--
 Find the mean level of support for male business students only.
 -->
+
+Code to find the mean level of conservatism for the sophomore business students.
+
+mean(dat$conservatism[dat$year=="sophomore" & dat$major=="business"])
+
