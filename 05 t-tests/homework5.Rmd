@@ -15,30 +15,43 @@ that people can type when listening to no music and when listening
 to heavy metal.
 -->
 
+First I need to read in the data for Homework5 with the following command.
+
 dat<-read.csv("homework5.csv")
 
 <!--
 Check the structure of the data.
 -->
 
+Next I will check the structure of the data using the following command.
+
 str(dat)
+
+From dat I can see that we have two variables, music and wpm.
 
 <!--
 Find the mean words per minute for the two groups.
 -->
 
+Now lets find the mean wpm typed for each group, "metal" and "none" with the following commamd.
+
 mean(dat$wpm[dat$music=="metal"])
 mean(dat$wpm[dat$music=="none"])
+
+Based on the results, it appears that the group listening to "metal" music typed more wpm (48.0) than the group listening to "no" music (42.4).
 
 <!--
 Run an independent t-test to determine if the mean wpm for the
 no music group is different from the mean wpm from heavy metal
 group. Interpret the results of your analysis after you run it.
 -->
+Lets run an independent t-test to determine if in fact the mean wpm between the two groups was different. I will use the following command to do this.
 
-t.test(dat$wpm[dat$music=="none"],
-       dat$wpm[dat$music=="metal"],
-       var.equal=TRUE)
+t.test(dat$wpm[dat$music=="metal"],
+        dat$wpm[dat$music=="none"],
+        var.equal=TRUE)
+
+From these results, I can see that the group listening to "metal" music typed more wpm than the group listening to "no" music, t(62) = 2.33, p = .0230.
 
 <!--
 Run another independent t-test with the alternative hypothesis that
@@ -46,25 +59,75 @@ the heavy metal group types faster than the no music group. Interpret
 the results of your analyses.
 -->
 
+Now lets run another independent t-test with the alternative hypothesis that the "metal" group typed more wpm than the "no" music group. I will use the following command to do this.
+
 t.test(dat$wpm[dat$music=="metal"],
-       dat$wpm[dat$music=="none"],
-       var.equal=TRUE,
-       alternative="greater")
+        dat$wpm[dat$music=="none"],
+        var.equal=TRUE,
+        alternative="greater")
+
+Based on these results, I can see that the group listening to "metal" music typed more wpm than the group listening to "no" music, t(62) = 2.33, p = .0115
 
 <!--
 Create a bar graph of the data.
 -->
 
+Next I will create a bar graph but first I need to install the following packages.
+
 library(ggplot2)
-
 library(gplots)
-
 library(dplyr)
 
-temp<-dat%>%metal_by(none)%>%
+Now I will need to use dplyr to summarize the data and find the means and standard errors of the means for the two groups.  I will use the following command to do this.
+
+temp<-dat%>%group_by(music)%>%
   summarize(means=mean(wpm), sems=sd(wpm)/sqrt(length(wpm)))
   
+Now I can create my bar graph using the following command.  
+
+f<-ggplot(temp,aes(x=factor(music),y=means))+
+  geom_bar(stat="identity", color="black",
+           fill=c("deepskyblue2", "deeppink"))+
+  geom_errorbar(aes(ymax=means+sems,
+                    ymin=means-sems),
+                width=.2)+
+  ggtitle("Response Times For the Groups")+
+  labs(x="Group", y="Response Time (ms)")+
+  scale_x_discrete(breaks=c("metal","none"),
+                   labels=c("Metal","None"))+
+  theme(plot.title=element_text(size=15,
+                                face="bold",
+                                vjust=.5))+
+  theme(axis.title.x=element_text(size=12,
+                                  face="bold",
+                                  vjust=-.25))+
+  theme(axis.title.y=element_text(size=12,
+                                  face="bold",
+                                  vjust=.25))+
+  theme(axis.text.x=element_text(size=10,
+                                 face="bold",
+                                 color="black"))+
+  theme(axis.text.y=element_text(size=10,
+                                 face="bold",
+                                 color="black"))+
+  coord_cartesian(ylim=c(min(temp$means)-2*max(temp$sems),
+                         max(temp$means)+2*max(temp$sems)))+
+  theme(panel.border=element_blank(),
+        axis.line=element_line())+
+  theme(panel.grid.major.x=element_blank())+
+  theme(panel.grid.major.y=element_line(color="darkgrey"))+
+  theme(panel.grid.minor.y=element_blank())
+f
+
 <!--
 Conduct and interpret a two-tailed paired t-test on the data.
 -->
 
+Lastly, I will run a two-tailed paired t-test on my data to compare the two groups using the following commands.
+
+t.test(dat$wpm[dat$music=="metal"],
+        dat$wpm[dat$music=="none"],
+        var.equal=TRUE,
+        paired=TRUE)
+        
+The results confirm that Individuals in the group listening to "metal" music typed more wpm than individuals in the group who listened to "no" music, t(31) = 12.15, p < .05.
