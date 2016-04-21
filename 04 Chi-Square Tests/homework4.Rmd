@@ -19,26 +19,26 @@ should preface your R commands with some plain English explanation.
 -->
 
 Step one is to read in the data for the Homework4 Assignment.
-
+```{r}
 dat<-read.csv("homework4.csv")
-
+```
 <!--
 Check the structure of the data.
 -->
 
 The next step is to check the structure of the Homework 4 Assignment.
-
+```{r}
 str(dat)
-
+```
 From the data we can see that there are two variables condition and agreement. 
 <!--
 Create a table that shows how many people fell into each category.
 -->
 
 Next step is to create a table showing how many participants fell into each of the conditions so we can see if there may be a relationship or if they are independent from each other.
-
+```{r}
 table(dat$condition, dat$agreement)
-
+```
 From the data we can see that more participants in the experimental group answered yes (26) compared to no (14). The control group had equal responses to yes (20) and no (20). 
 
 <!--
@@ -51,7 +51,7 @@ insert the chi-square symbol, you can just use chi-square instead
 -->
 
 Next I performed a chi-square test to determine whether or not the experimental condition and agreement with a statement are independent or related.
-
+```{r}
 chisq.test(dat$condition,dat$agreement)
-
+```
 According to the results of the chi-square test, the experimental condition and agreement with statement are independent of one another Chi-square = 1.3, p = .26

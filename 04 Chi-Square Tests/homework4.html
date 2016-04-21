@@ -79,18 +79,25 @@ Read in the homework4.csv data. For each of the following steps you
 should preface your R commands with some plain English explanation.
 -->
 <p>Step one is to read in the data for the Homework4 Assignment.</p>
-<p>dat&lt;-read.csv(“homework4.csv”)</p>
+<pre class="r"><code>dat&lt;-read.csv(&quot;homework4.csv&quot;)</code></pre>
 <!--
 Check the structure of the data.
 -->
 <p>The next step is to check the structure of the Homework 4 Assignment.</p>
-<p>str(dat)</p>
+<pre class="r"><code>str(dat)</code></pre>
+<pre><code>## 'data.frame':    80 obs. of  2 variables:
+##  $ condition: Factor w/ 2 levels &quot;control&quot;,&quot;experimental&quot;: 2 1 2 1 2 1 2 1 2 1 ...
+##  $ agreement: Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 2 2 1 1 2 2 1 2 ...</code></pre>
 <p>From the data we can see that there are two variables condition and agreement. <!--
 Create a table that shows how many people fell into each category.
 --></p>
 <p>Next step is to create a table showing how many participants fell into each of the conditions so we can see if there may be a relationship or if they are independent from each other.</p>
-<p>table(dat<span class="math">\(condition, dat\)</span>agreement)</p>
-<p>From the data we CAN see that more participants in the experimental group answered yes (26) compared to no (14). The control group had equal responses to yes (20) and no (20).</p>
+<pre class="r"><code>table(dat$condition, dat$agreement)</code></pre>
+<pre><code>##               
+##                no yes
+##   control      20  20
+##   experimental 14  26</code></pre>
+<p>From the data we can see that more participants in the experimental group answered yes (26) compared to no (14). The control group had equal responses to yes (20) and no (20).</p>
 <!--
 Perform a chi-square test to determine whether or not the experimental
 conditions and agreement with a statement are independent or related.
@@ -99,9 +106,14 @@ statement that supports your interpretation. As there's no way to
 insert the chi-square symbol, you can just use chi-square instead
 (see example4.Rmd).
 -->
-<p>Next I perform a chi-square test to determine whether or not the experimental condition and agreement with a statement are independent or related.</p>
-<p>chisq.test(dat<span class="math">\(condition,dat\)</span>agreement)</p>
-<p>According to the results of the chi-square test, the experimental condition and agreement with a statement are independent of one another Chi-square = 1.3, p = .26</p>
+<p>Next I performed a chi-square test to determine whether or not the experimental condition and agreement with a statement are independent or related.</p>
+<pre class="r"><code>chisq.test(dat$condition,dat$agreement)</code></pre>
+<pre><code>## 
+##  Pearson's Chi-squared test with Yates' continuity correction
+## 
+## data:  dat$condition and dat$agreement
+## X-squared = 1.2788, df = 1, p-value = 0.2581</code></pre>
+<p>According to the results of the chi-square test, the experimental condition and agreement with statement are independent of one another Chi-square = 1.3, p = .26</p>
 </div>
 
 
