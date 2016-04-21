@@ -75,18 +75,24 @@ that people can type when listening to no music and when listening
 to heavy metal.
 -->
 <p>First I need to read in the data for Homework5 with the following command.</p>
-<p>dat&lt;-read.csv(“homework5.csv”)</p>
+<pre class="r"><code>dat&lt;-read.csv(&quot;homework5.csv&quot;)</code></pre>
 <!--
 Check the structure of the data.
 -->
 <p>Next I will check the structure of the data using the following command.</p>
-<p>str(dat)</p>
+<pre class="r"><code>str(dat)</code></pre>
+<pre><code>## 'data.frame':    64 obs. of  2 variables:
+##  $ music: Factor w/ 2 levels &quot;metal&quot;,&quot;none&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ wpm  : num  23.5 44.1 42.3 24.4 42.8 ...</code></pre>
 <p>From dat I can see that we have two variables, music and wpm.</p>
 <!--
 Find the mean words per minute for the two groups.
 -->
 <p>Now lets find the mean wpm typed for each group, “metal” and “none” with the following commamd.</p>
-<p>mean(dat<span class="math">\(wpm[dat\)</span>music==“metal”]) mean(dat<span class="math">\(wpm[dat\)</span>music==“none”])</p>
+<pre class="r"><code>mean(dat$wpm[dat$music==&quot;metal&quot;])</code></pre>
+<pre><code>## [1] 48.03665</code></pre>
+<pre class="r"><code>mean(dat$wpm[dat$music==&quot;none&quot;])</code></pre>
+<pre><code>## [1] 42.44641</code></pre>
 <p>Based on the results, it appears that the group listening to “metal” music typed more wpm (48.0) than the group listening to “no” music (42.4).</p>
 <!--
 Run an independent t-test to determine if the mean wpm for the
@@ -94,7 +100,20 @@ no music group is different from the mean wpm from heavy metal
 group. Interpret the results of your analysis after you run it.
 -->
 <p>Lets run an independent t-test to determine if in fact the mean wpm between the two groups was different. I will use the following command to do this.</p>
-<p>t.test(dat<span class="math">\(wpm[dat\)</span>music==“metal”], dat<span class="math">\(wpm[dat\)</span>music==“none”], var.equal=TRUE)</p>
+<pre class="r"><code>t.test(dat$wpm[dat$music==&quot;metal&quot;],
+        dat$wpm[dat$music==&quot;none&quot;],
+        var.equal=TRUE)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  dat$wpm[dat$music == &quot;metal&quot;] and dat$wpm[dat$music == &quot;none&quot;]
+## t = 2.3317, df = 62, p-value = 0.02298
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   0.7977514 10.3827312
+## sample estimates:
+## mean of x mean of y 
+##  48.03665  42.44641</code></pre>
 <p>From these results, I can see that the group listening to “metal” music typed more wpm than the group listening to “no” music, t(62) = 2.33, p = .0230.</p>
 <!--
 Run another independent t-test with the alternative hypothesis that
@@ -102,22 +121,104 @@ the heavy metal group types faster than the no music group. Interpret
 the results of your analyses.
 -->
 <p>Now lets run another independent t-test with the alternative hypothesis that the “metal” group typed more wpm than the “no” music group. I will use the following command to do this.</p>
-<p>t.test(dat<span class="math">\(wpm[dat\)</span>music==“metal”], dat<span class="math">\(wpm[dat\)</span>music==“none”], var.equal=TRUE, alternative=“greater”)</p>
+<pre class="r"><code>t.test(dat$wpm[dat$music==&quot;metal&quot;],
+        dat$wpm[dat$music==&quot;none&quot;],
+        var.equal=TRUE,
+        alternative=&quot;greater&quot;)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  dat$wpm[dat$music == &quot;metal&quot;] and dat$wpm[dat$music == &quot;none&quot;]
+## t = 2.3317, df = 62, p-value = 0.01149
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  1.586923      Inf
+## sample estimates:
+## mean of x mean of y 
+##  48.03665  42.44641</code></pre>
 <p>Based on these results, I can see that the group listening to “metal” music typed more wpm than the group listening to “no” music, t(62) = 2.33, p = .0115</p>
 <!--
 Create a bar graph of the data.
 -->
 <p>Next I will create a bar graph but first I need to install the following packages.</p>
-<p>library(ggplot2) library(gplots) library(dplyr)</p>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package 'ggplot2' was built under R version 3.2.5</code></pre>
+<pre class="r"><code>library(gplots)</code></pre>
+<pre><code>## Warning: package 'gplots' was built under R version 3.2.5</code></pre>
+<pre><code>## 
+## Attaching package: 'gplots'
+## 
+## The following object is masked from 'package:stats':
+## 
+##     lowess</code></pre>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## Warning: package 'dplyr' was built under R version 3.2.5</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <p>Now I will need to use dplyr to summarize the data and find the means and standard errors of the means for the two groups. I will use the following command to do this.</p>
-<p>temp&lt;-dat%&gt;%group_by(music)%&gt;% summarize(means=mean(wpm), sems=sd(wpm)/sqrt(length(wpm)))</p>
+<pre class="r"><code>temp&lt;-dat%&gt;%group_by(music)%&gt;%
+  summarize(means=mean(wpm), sems=sd(wpm)/sqrt(length(wpm)))</code></pre>
 <p>Now I can create my bar graph using the following command.</p>
-<p>f&lt;-ggplot(temp,aes(x=factor(music),y=means))+ geom_bar(stat=“identity”, color=“black”, fill=c(“deepskyblue2”, “deeppink”))+ geom_errorbar(aes(ymax=means+sems, ymin=means-sems), width=.2)+ ggtitle(“Response Times For the Groups”)+ labs(x=“Group”, y=“Response Time (ms)”)+ scale_x_discrete(breaks=c(“metal”,“none”), labels=c(“Metal”,“None”))+ theme(plot.title=element_text(size=15, face=“bold”, vjust=.5))+ theme(axis.title.x=element_text(size=12, face=“bold”, vjust=-.25))+ theme(axis.title.y=element_text(size=12, face=“bold”, vjust=.25))+ theme(axis.text.x=element_text(size=10, face=“bold”, color=“black”))+ theme(axis.text.y=element_text(size=10, face=“bold”, color=“black”))+ coord_cartesian(ylim=c(min(temp<span class="math">\(means)-2*max(temp\)</span>sems), max(temp<span class="math">\(means)+2*max(temp\)</span>sems)))+ theme(panel.border=element_blank(), axis.line=element_line())+ theme(panel.grid.major.x=element_blank())+ theme(panel.grid.major.y=element_line(color=“darkgrey”))+ theme(panel.grid.minor.y=element_blank()) f</p>
-<!--
+<pre class="r"><code>f&lt;-ggplot(temp,aes(x=factor(music),y=means))+
+  geom_bar(stat=&quot;identity&quot;, color=&quot;black&quot;,
+           fill=c(&quot;deepskyblue2&quot;, &quot;deeppink&quot;))+
+  geom_errorbar(aes(ymax=means+sems,
+                    ymin=means-sems),
+                width=.2)+
+  ggtitle(&quot;Response Times For the Groups&quot;)+
+  labs(x=&quot;Group&quot;, y=&quot;Response Time (ms)&quot;)+
+  scale_x_discrete(breaks=c(&quot;metal&quot;,&quot;none&quot;),
+                   labels=c(&quot;Metal&quot;,&quot;None&quot;))+
+  theme(plot.title=element_text(size=15,
+                                face=&quot;bold&quot;,
+                                vjust=.5))+
+  theme(axis.title.x=element_text(size=12,
+                                  face=&quot;bold&quot;,
+                                  vjust=-.25))+
+  theme(axis.title.y=element_text(size=12,
+                                  face=&quot;bold&quot;,
+                                  vjust=.25))+
+  theme(axis.text.x=element_text(size=10,
+                                 face=&quot;bold&quot;,
+                                 color=&quot;black&quot;))+
+  theme(axis.text.y=element_text(size=10,
+                                 face=&quot;bold&quot;,
+                                 color=&quot;black&quot;))+
+  coord_cartesian(ylim=c(min(temp$means)-2*max(temp$sems),
+                         max(temp$means)+2*max(temp$sems)))+
+  theme(panel.border=element_blank(),
+        axis.line=element_line())+
+  theme(panel.grid.major.x=element_blank())+
+  theme(panel.grid.major.y=element_line(color=&quot;darkgrey&quot;))+
+  theme(panel.grid.minor.y=element_blank())
+f</code></pre>
+<p><img src="data:image/png;base64,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" title alt width="672" /> <!--
 Conduct and interpret a two-tailed paired t-test on the data.
--->
+--></p>
 <p>Lastly, I will run a two-tailed paired t-test on my data to compare the two groups using the following commands.</p>
-<p>t.test(dat<span class="math">\(wpm[dat\)</span>music==“metal”], dat<span class="math">\(wpm[dat\)</span>music==“none”], var.equal=TRUE, paired=TRUE)</p>
+<pre class="r"><code>t.test(dat$wpm[dat$music==&quot;metal&quot;],
+        dat$wpm[dat$music==&quot;none&quot;],
+        var.equal=TRUE,
+        paired=TRUE)</code></pre>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  dat$wpm[dat$music == &quot;metal&quot;] and dat$wpm[dat$music == &quot;none&quot;]
+## t = 12.153, df = 31, p-value = 2.51e-13
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  4.652093 6.528390
+## sample estimates:
+## mean of the differences 
+##                5.590241</code></pre>
 <p>The results confirm that Individuals in the group listening to “metal” music typed more wpm than individuals in the group who listened to “no” music, t(31) = 12.15, p &lt; .05.</p>
 </div>
 

@@ -16,17 +16,17 @@ to heavy metal.
 -->
 
 First I need to read in the data for Homework5 with the following command.
-
+```{r}
 dat<-read.csv("homework5.csv")
-
+```
 <!--
 Check the structure of the data.
 -->
 
 Next I will check the structure of the data using the following command.
-
+```{r}
 str(dat)
-
+```
 From dat I can see that we have two variables, music and wpm.
 
 <!--
@@ -34,10 +34,10 @@ Find the mean words per minute for the two groups.
 -->
 
 Now lets find the mean wpm typed for each group, "metal" and "none" with the following commamd.
-
+```{r}
 mean(dat$wpm[dat$music=="metal"])
 mean(dat$wpm[dat$music=="none"])
-
+```
 Based on the results, it appears that the group listening to "metal" music typed more wpm (48.0) than the group listening to "no" music (42.4).
 
 <!--
@@ -46,11 +46,11 @@ no music group is different from the mean wpm from heavy metal
 group. Interpret the results of your analysis after you run it.
 -->
 Lets run an independent t-test to determine if in fact the mean wpm between the two groups was different. I will use the following command to do this.
-
+```{r}
 t.test(dat$wpm[dat$music=="metal"],
         dat$wpm[dat$music=="none"],
         var.equal=TRUE)
-
+```
 From these results, I can see that the group listening to "metal" music typed more wpm than the group listening to "no" music, t(62) = 2.33, p = .0230.
 
 <!--
@@ -60,12 +60,12 @@ the results of your analyses.
 -->
 
 Now lets run another independent t-test with the alternative hypothesis that the "metal" group typed more wpm than the "no" music group. I will use the following command to do this.
-
+```{r}
 t.test(dat$wpm[dat$music=="metal"],
         dat$wpm[dat$music=="none"],
         var.equal=TRUE,
         alternative="greater")
-
+```
 Based on these results, I can see that the group listening to "metal" music typed more wpm than the group listening to "no" music, t(62) = 2.33, p = .0115
 
 <!--
@@ -73,18 +73,18 @@ Create a bar graph of the data.
 -->
 
 Next I will create a bar graph but first I need to install the following packages.
-
+```{r}
 library(ggplot2)
 library(gplots)
 library(dplyr)
-
+```
 Now I will need to use dplyr to summarize the data and find the means and standard errors of the means for the two groups.  I will use the following command to do this.
-
+```{r}
 temp<-dat%>%group_by(music)%>%
   summarize(means=mean(wpm), sems=sd(wpm)/sqrt(length(wpm)))
-  
+```  
 Now I can create my bar graph using the following command.  
-
+```{r}
 f<-ggplot(temp,aes(x=factor(music),y=means))+
   geom_bar(stat="identity", color="black",
            fill=c("deepskyblue2", "deeppink"))+
@@ -118,16 +118,16 @@ f<-ggplot(temp,aes(x=factor(music),y=means))+
   theme(panel.grid.major.y=element_line(color="darkgrey"))+
   theme(panel.grid.minor.y=element_blank())
 f
-
+```
 <!--
 Conduct and interpret a two-tailed paired t-test on the data.
 -->
 
 Lastly, I will run a two-tailed paired t-test on my data to compare the two groups using the following commands.
-
+```{r}
 t.test(dat$wpm[dat$music=="metal"],
         dat$wpm[dat$music=="none"],
         var.equal=TRUE,
         paired=TRUE)
-        
+```        
 The results confirm that Individuals in the group listening to "metal" music typed more wpm than individuals in the group who listened to "no" music, t(31) = 12.15, p < .05.
