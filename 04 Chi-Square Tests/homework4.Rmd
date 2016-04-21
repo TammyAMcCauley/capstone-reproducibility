@@ -54,4 +54,4 @@ Next I performed a chi-square test to determine whether or not the experimental 
 ```{r}
 chisq.test(dat$condition,dat$agreement)
 ```
-According to the results of the chi-square test, the experimental condition and agreement with statement are independent of one another Chi-square = 1.3, p = .26
+According to the results of the chi-square test, the experimental condition and agreement with statement are independent of one another Chi-square(1) = 1.3, p = .26
