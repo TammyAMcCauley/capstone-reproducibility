@@ -18,47 +18,49 @@ Read in the homework3.csv data. For each of the following steps you
 should preface your R commands with some plain English explanation.
 -->
 
-Code to read in the data for the homework 3 assignment.
-
+Read in the data for the homework3 assignment.
+```{r}
 dat<-read.csv("homework3.csv")
-
+```
 <!--
 Check the structure of the data.
 -->
-Code to check the structure of the data for the homework 3 assignment.
-
+Check the structure of the data for homework3 assignment.
+```{r}
 str(dat)
+```
 
+From this information, we can see that we have 3 variables, major, year, and conservatism. 
 <!--
 Find the mean, median, and standard deviation using the sd() function
 for the overall level of conservatism.
 -->
 
-Code to find the mean, median and standard deviation for conservatism.
-
+Find the mean, median and standard deviation for conservatism using the sd() function.
+```{r}
 mean(dat$conservatism)
 median(dat$conservatism)
 sd(dat$conservatism)
-
-From the above data we can see that the mean for conservatism is 52.3, the median is 53.8, and the standard deviation is 19.8
+```
+From this data we can see that the mean for conservatism is 52.3, the median is 53.8, and the standard deviation is 19.8
 
 <!--
 Find the mean level of support for freshmen only.
 -->
 
-Code to find the mean level of conservatism for only the freshmen.
-
+Find the mean level of conservatism for only the freshmen.
+```{r}
 mean(dat$conservatism[dat$year=="freshman"])
-
+```
 From this data we can see that the mean conservatism for freshman is 47.5
 
 <!--
 Find the mean level of support for male business students only.
 -->
 
-Code to find the mean level of conservatism for the sophomore business students.
-
+Find the mean level of conservatism for the sophomore business students.
+```{r}
 mean(dat$conservatism[dat$year=="sophomore" & dat$major=="business"])
-
+```
 From this data set we can see that the mean conservatism for sophomore business students is 61.6
 
