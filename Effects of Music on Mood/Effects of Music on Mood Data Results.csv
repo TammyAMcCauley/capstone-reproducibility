@@ -1,0 +1,57 @@
+Mood Rating,ENM (1),SWNM (2),SNM (3),Neutral (4),SPM (5),SWPM (6),EPM (7),Words Recalled,Words Correct,Gender,Male (1),Female (2),Age,18-24 (1),25-34 (2),35-44 (3),45-54 (4),55-64 (5),65-74 (6),75+ (7),MOB,,Music,Yes (1),No (2),Condition
+4,,,,4,,,,Chair  Veil  Bottom  Office  tooth  ,5,2,,2,2,,2,,,,,,12,December,1,1,,Pos
+4,,,,4,,,,Chair  Lamp  Tank  Leg  Bottom  Office  ,6,2,,2,3,,,3,,,,,3,March,1,1,,Pos
+4,,,,4,,,,None,0,1,,1,1,,1,,,,,,2,February,2,,2,Neg
+5,,,,,5,,,chair  legs  veil  bottom  ,4,2,,2,1,,1,,,,,,8,August,1,1,,Neg
+4,,,,4,,,,wood  veil  tooth  legs  eye  will  office  ink   screen  ,9,2,,2,4,,,,4,,,,4,April,2,,2,None
+5,,,,,5,,,veil  wheel  table  couch  window,1,1,1,,3,,,3,,,,,1,January,2,,2,None
+5,,,,,5,,,chair  table  riders  eye,3,2,,2,1,1,,,,,,,3,March,1,1,,Pos
+6,,,,,,6,,chair  desk  lamp  table  candle  door  eye  tooth  frame,7,2,,2,2,,2,,,,,,5,May,1,1,,Neg
+7,,,,,,,7,none,0,2,,2,1,1,,,,,,,8,August,1,1,,Neg
+6,,,,,,6,,chair  door  touch  bottom  up,4,1,1,,3,,,3,,,,,5,May,1,1,,Neg
+4,,,,4,,,,road  door  frame  tool  lamp   chair  candle  office  wood  eye  leg  ,9,2,,2,2,,2,,,,,,7,July,2,,2,None
+6,,,,,,6,,table lamp tank   bottom door light,4,2,,2,3,,,3,,,,,2,February,1,1,,Neg
+4,,,,4,,,,bottom  door  office  big  wood  leg  last,6,2,,2,3,,,3,,,,,10,October,2,,2,None
+4,,,,4,,,,none,0,2,,2,3,,,3,,,,,7,July,2,,2,None
+7,,,,,,,7,veil  eye  legs  ,3,2,,2,4,,,,4,,,,4,April,2,,2,None
+4,,,,4,,,,lamp eye tooth veil tree touch follow,6,2,,2,1,1,,,,,,,2,February,1,1,,Neg
+5,,,,,5,,,None,0,1,1,,1,1,,,,,,,9,September,1,1,,Pos
+4,,,,4,,,,free  big  ink,3,2,,2,3,,,3,,,,,4,April,1,1,,None
+4,,,,4,,,,chair  legs  big  veil  screen  last  free   eye,7,2,,2,3,,,3,,,,,5,May,1,1,,Neg
+6,,,,,,6,,chair  wood  veil  ,3,2,,2,4,,,,4,,,,12,December,1,1,,Pos
+6,,,,,,6,,glass  touch  lamp  door  will  wood  riders  frame,6,2,,2,4,,,,4,,,,9,September,1,1,,Pos
+4,,,,4,,,,door chair mood tooth wood ,4,1,1,,5,,,,,5,,,4,April,2,,2,None
+6,,,,,,6,,chair  tank  tool  oil,2,2,,2,2,,2,,,,,,6,June,1,1,,Pos
+4,,,,4,,,,LEGS  PAIR  CHAIR  FOLLOW  ,3,1,1,,3,,,3,,,,,10,October,2,,2,None
+7,,,,,,,7,Nine,0,2,,2,4,,,,4,,,,12,December,1,1,,Pos
+6,,,,,,6,,"chair, tank, wood, screen, follow, leg",6,2,,2,5,,,,,5,,,8,August,1,1,,Neg
+6,,,,,,6,,"legs, will, follow, road,",4,2,,2,5,,,,,5,,,9,September,1,1,,Pos
+3,,,3,,,,,"chair, lamp, frame, desk, bottom, tooth, screen, veil, eye, legs",9,2,,2,5,,,,,5,,,7,July,2,,2,None
+5,,,,,5,,,none,0,1,1,,3,,,3,,,,,6,June,1,1,,Pos
+4,,,,4,,,,wood   veil  tooth  ,3,1,1,,4,,,,4,,,,3,March,1,1,,Pos
+4,,,,4,,,,ice  road  office  chair  wall  will  veil,5,2,,2,2,,2,,,,,,6,June,1,1,,Pos
+3,,,3,,,,,none,0,2,,2,3,,,3,,,,,6,June,2,,2,Pos
+7,,,,,,,7,Chair  INK  TABLE  BEACH  ,2,2,,2,3,,,3,,,,,9,September,1,1,,Pos
+6,,,,,,6,,chair  leg  office  eye  touch  lamp  candle  wood  free  big,10,2,,2,4,,,,4,,,,8,August,1,1,,Neg
+2,,2,,,,,,chair lamp table tank screen candle big riders office ink follow thread door road pick legs will veil frame bottom,19,2,,2,4,,,,4,,,,5,May,1,1,,Neg
+7,,,,,,,7,chair  lamp  door  table  thread,4,2,,2,5,,,,,5,,,6,June,1,1,,Pos
+5,,,,,5,,,wood  touch  road  legs  tooth  ,5,1,1,,5,,,,,5,,,6,June,1,1,,Pos
+7,,,,,,,7,good  bad   positive  survey  monkey  easy,0,2,,2,5,,,,,5,,,4,April,2,,2,None
+6,,,,,,6,,Chair  Pick  Wood  Will  Walk,4,1,1,,2,,2,,,,,,6,June,1,1,,Pos
+4,,,,4,,,,chair  door  lamp  follow  ,4,2,,2,1,1,,,,,,,2,February,1,1,,Neg
+4,,,,4,,,,eye  chair  ,2,2,,2,6,,,,,,6,,7,July,2,,2,None
+6,,,,,,6,,legs chair bottom door ,4,1,1,,4,,,,4,,,,2,February,1,1,,Neg
+1,1,,,,,,,"Bang, swim",0,2,,2,1,1,,,,,,,10,October,2,,2,None
+7,,,,,,,7,Eye  Tank  Thread  Free  Tooth  Office  Riders  Eye  Chair  Wood,10,2,,2,3,,,3,,,,,5,May,1,1,,Neg
+7,,,,,,,7,wood bottom clear memory ,2,1,1,,4,,,,4,,,,2,February,1,1,,Neg
+5,,,,,5,,,"tank,",1,2,,2,3,,,3,,,,,9,September,1,1,,Pos
+4,,,,4,,,,chair  lamp  table   candle   tank   free          ,5,2,,2,4,,,,4,,,,12,December,1,1,,Pos
+5,,,,,5,,,tank  office  chair  ,3,2,,2,5,,,,,5,,,7,July,2,,2,None
+2,,2,,,,,,Chair wood door eye ,4,2,,2,2,,2,,,,,,3,March,1,1,,Pos
+5,,,,,5,,,chair  lamp  screen  candle  riders  key  bottom  ,6,2,,2,3,,,3,,,,,8,August,1,1,,Neg
+6,,,,,,6,,chair screen frame  oops guess did not pay attention,3,2,,2,6,,,,,,6,,11,November,1,1,,Neg
+7,,,,,,,7,"free, wood, chair,eye",4,2,,2,3,,,3,,,,,5,May,1,1,,Neg
+7,,,,,,,7,"Eye, chair, frame, legs, lamp office ink, window, table, ",7,2,,2,5,,,,,5,,,10,October,2,,2,None
+6,,,,,,6,,None,0,2,,2,4,,,,4,,,,4,April,2,,2,None
+6,,,,,,6,,office  look  desk  ,1,2,,2,3,,,3,,,,,3,March,1,1,,Pos
+,,,,,,,,,,,,,,,,,,,,,,,,,,

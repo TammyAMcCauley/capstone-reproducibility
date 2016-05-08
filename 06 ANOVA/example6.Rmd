@@ -91,9 +91,8 @@ f<-ggplot(temp, aes(x=as.factor(position),
   theme(panel.grid.minor.y=element_blank())
 f
 ```
-From the figure we can see that participants do the best on the
-words that occur at the beginning of the list and worst on the words
-that occur at the ending of the list.
+
+From the figure we can see that as the number of distractors increased so did the amount of time each participant needed to respond.
 
 <!--
 Perform a one-way within subjects ANOVA on the same data you analyzed
@@ -125,7 +124,7 @@ participants had an intervening distractor task before recalling
 the lists of words.
 -->
 
-Now, I'll perform a between-subjects 2-way ANOVA looking for effects
+Next, I'll perform a between-subjects 2-way ANOVA looking for effects
 of and interactions between list position and whether or not
 participants completed an intervening task.
 
