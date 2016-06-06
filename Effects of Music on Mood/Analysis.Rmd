@@ -1,7 +1,7 @@
 ---
 title: "Effects of Music on Mood"
-authors: Jessica Fagan-Sheehan and Tammy McCauley
-date: "May 9, 2016"
+authors: Jessica M. Fagan-Sheehan and Tammy A. McCauley
+date: "May 15, 2016"
 output: html_document
 ---
 
@@ -21,15 +21,15 @@ dat<-read.csv("EffectsofMusiconMood.csv")
 str(dat)
 ```
 
-From looking at the structure of our data, we can see that there were a total of 52 participants and 3 variables:  mood rating, Number of words recalled correct, and music condition (negative,none, or positive).
+From looking at the structure of our data, we can see that there were a total of 52 participants and 3 variables:  Mood Rating, Words Correct, and Condition (neg, none, or pos).
 
-To analyze our data, we will conduct a one-way between subjects ANOVA examining for effects of Mood for condition and then create a line graph to help interpret the results.  
+To analyze our data, we conducted a one-way between subjects ANOVA examining for effects of Mood for condition and then created a bar graph to help interpret the results.  
 
 ```{r}
 summary(aov(Mood.Rating~Condition, data=dat))
 ```
 
-According to the results of the ANOVA, the music condition had no effect on the participants mood rating, F(2,49) = 1.7, p = .187. Now let's create our line graph to see how the music conditions a???ected mood. First we'll need to load our graphics libraries.
+According to the results of the ANOVA, the music condition had no effect on the participants mood rating, F(2,49) = 1.7, p = .187. To help us interpret the analysis, we created a bar graph. 
 
 ```{r}
 
@@ -48,13 +48,13 @@ f<-ggplot(temp, aes(x=Condition,
   scale_fill_manual(values=c("darkgreen","red","blue"),
                      name="Music",
                      breaks=c("neg","no", "pos"),
-                     labels=c("Neg", "No", "Pos"))+
+                     labels=c("neg", "no", "pos"))+
   geom_errorbar(aes(ymax=means+sems,
                     ymin=means-sems),
                 width=.2,
                 position=position_dodge(.9))+
-  ggtitle("Words Recalled by Music Condition")+
-  labs(x="Music Condition",y="Words Recalled")+
+  ggtitle("Effect of Music on Mood")+
+  labs(x="Music Condition",y="Mood Rating")+
   theme(plot.title=element_text(size=15,face="bold",vjust=.5))+
   theme(axis.title.x=element_text(size=12,face="bold",vjust=-.25))+
   theme(axis.title.y=element_text(size=12,face="bold",vjust=1))+
@@ -74,42 +74,17 @@ f<-ggplot(temp, aes(x=Condition,
   theme(legend.title.align=.5)+
   theme(legend.text=element_text(size=10,face="bold"))
 f
-
-f<-ggplot(temp, aes(x=as.factor(Condition),
-                    y=means,
-                    group=1))+
-  geom_line(size=1)+
-  geom_point(size=2)+
-  geom_errorbar(aes(ymax=means+sems,
-                    ymin=means-sems),
-                width=.2)+
-  ggtitle("Effect of Music on Mood")+
-  labs(x="Music Condition",y="Mood Rating")+
-  theme(plot.title=element_text(size=15,face="bold",vjust=.5))+
-  theme(axis.title.x=element_text(size=12,face="bold",vjust=-.25))+
-  theme(axis.title.y=element_text(size=12,face="bold",vjust=1))+
-  theme(axis.text.x=element_text(size=10,face="bold",color="black"))+
-  theme(axis.text.y=element_text(size=10,face="bold",color="black"))+
-  coord_cartesian(ylim=c(min(temp$means)-2*max(temp$sems),
-                         max(temp$means)+2*max(temp$sems)))+
-  theme(panel.border=element_blank(),axis.line=element_line())+
-  theme(panel.grid.major.x=element_blank())+
-  theme(panel.grid.major.y=element_line(color="darkgrey"))+
-  theme(panel.grid.minor.y=element_blank())
-f
 ```
 
-Based on the above ANOVA and line graph, we can see that the negative music condition had the greatest effect on mood followed by the positive music condition.
+Based on the bar graph, it appears that the negative music condition may have had a slightly higher effect on the mood rating followed by the positive music condition.
 
-Next we will run another one-way between subjects ANOVA to examining for effects of Words Correct for condition and then create a second line graph to help interpret the results.  
+Next we ran a second one-way between subjects ANOVA to examine for effects of Words Correct for condition and created a second bar graph to help interpret the results.  
 
 ```{r}
 summary(aov(Words.Correct~Condition, data=dat))
 ```
 
-Based on these results, we can also see that the music condition had an effect of the number of words recalled correctly, F(2,49) = 3.2, p = <.05.
-
-Now lets creat a bar graph to help us interpret this analysis.
+Based on these results, music condition had an effect of the number of words recalled correctly, F(2,49) = 3.2, p = <.05. To help us interpret the results better, we created a bar graph for this analysis.
 
 ```{r}
 
@@ -154,32 +129,11 @@ f<-ggplot(temp, aes(x=Condition,
   theme(legend.title.align=.5)+
   theme(legend.text=element_text(size=10,face="bold"))
 f
-
-f<-ggplot(temp, aes(x=as.factor(Condition),
-                    y=means,
-                    group=1))+
-  geom_line(size=1)+
-  geom_point(size=2)+
-  geom_errorbar(aes(ymax=means+sems,
-                    ymin=means-sems),
-                width=.2)+
-  ggtitle("Effect of Music on Words Recalled")+
-  labs(x="Music Condition",y="Words Recalled Correctly")+
-  theme(plot.title=element_text(size=15,face="bold",vjust=.5))+
-  theme(axis.title.x=element_text(size=12,face="bold",vjust=-.25))+
-  theme(axis.title.y=element_text(size=12,face="bold",vjust=1))+
-  theme(axis.text.x=element_text(size=10,face="bold",color="black"))+
-  theme(axis.text.y=element_text(size=10,face="bold",color="black"))+
-  coord_cartesian(ylim=c(min(temp$means)-2*max(temp$sems),
-                         max(temp$means)+2*max(temp$sems)))+
-  theme(panel.border=element_blank(),axis.line=element_line())+
-  theme(panel.grid.major.x=element_blank())+
-  theme(panel.grid.major.y=element_line(color="darkgrey"))+
-  theme(panel.grid.minor.y=element_blank())
-f
 ```
 
-Based on the results of this analysis, we can see that participants who heard negative music had the greatest number of words recalled correctly while participants who listened to the positive music had the lowest number of words recalled correctly.
+Based on the results of this analysis, Music did have an effect on the number of words recalled correctly.  We can see in the bar graph that participants who heard negative music had the greatest number of words recalled correctly while participants who listened to the positive music had the lowest number of words recalled correctly. These results were opposit of what we hypothesized it would be.
+
+Next, we ran follow up t-tests to determine between which two conditions the effect occurred. 
 
 ```{r}
 mean(dat$Words.Correct[dat$Condition=="Neg"])
@@ -196,9 +150,10 @@ t.test(dat$Words.Correct[dat$Condition=="None"],
 dat$Words.Correct[dat$Condition=="Neg"],
 var.equal=TRUE)
 ```
-
 ```{r}
 t.test(dat$Words.Correct[dat$Condition=="Neg"],
 dat$Words.Correct[dat$Condition=="Pos"],
 var.equal=TRUE)
 ```
+
+The results of the two tailed t-tests indicated that the significant effect was between the Negative and Positive conditions, t = 2.5, df = 35, p = 0.015.

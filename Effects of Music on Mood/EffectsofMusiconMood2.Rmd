@@ -29,7 +29,7 @@ To analyze our data, we will conduct a one-way between subjects ANOVA examining 
 summary(aov(Mood.Rating~Condition, data=dat))
 ```
 
-According to the results of the ANOVA, the music condition had no effect on the participants mood rating, F(2,49) = 1.7, p = .187. Now let's create our line graph to see how the music conditions a???ected mood. First we'll need to load our graphics libraries.
+According to the results of the ANOVA, the music condition had no effect on the participants mood rating, F(2,49) = 1.7, p = .187. Now let's create our line graph to see how the music conditions affected mood. First we'll need to load our graphics libraries.
 
 ```{r}
 
@@ -182,6 +182,7 @@ f
 Based on the results of this analysis, we can see that participants who heard negative music had the greatest number of words recalled correctly while participants who listened to the positive music had the lowest number of words recalled correctly.
 
 ```{r}
+
 mean(dat$Words.Correct[dat$Condition=="Neg"])
 mean(dat$Words.Correct[dat$Condition=="Pos"])
 mean(dat$Words.Correct[dat$Condition=="None"])
@@ -202,3 +203,7 @@ t.test(dat$Words.Correct[dat$Condition=="Neg"],
 dat$Words.Correct[dat$Condition=="Pos"],
 var.equal=TRUE)
 ```
+
+
+
+

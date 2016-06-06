@@ -1,11 +1,10 @@
-## Capstone Reproducibility Homework
+## Capstone Research Project "Effects of Music on Mood"
 
-### William H. Knapp III
+### Tammy A McCauley
 
 #### Eastern Oregon University
 
-This github repository contains nearly everything you'll need to complete the
-homework you'll need to prepare to analyze your own data from your experiment.
+This github repository contains everything you will need to prepare an analysis and reproduce the Effects of Music on Mood experiment.
 
 Specifically, this repository contains the following directories and files.
 
